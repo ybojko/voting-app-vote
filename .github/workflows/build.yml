@@ -1,0 +1,28 @@
+name: Build Vote
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "vote/**"
+      - ".github/workflows/build.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "vote/**"
+      - ".github/workflows/build.yml"
+
+jobs:
+  build:
+    uses: ybojko/voting-app-ci/.github/workflows/build.yml@main
+    permissions:
+      id-token: write
+      contents: read
+    with:
+      service-name: vote
+      context: vote
+      platforms: linux/amd64,linux/arm64,linux/arm/v7
+    secrets:
+      GIT_OPS_TOKEN: ${{ secrets.GIT_OPS_TOKEN }}
