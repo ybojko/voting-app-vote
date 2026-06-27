@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    uses: ybojko/voting-app-ci/.github/workflows/build.yml@main
+    uses: ybojko/voting-app-ci/.github/workflows/build.yml@master
     permissions:
       id-token: write
       contents: read
